@@ -319,7 +319,8 @@ blockToOpenDocument o bs
                            i <- paraStyle "Quotations" []
                            inBlockQuote o i (map plainToPara b)
       orderedList a b = do (ln,pn) <- newOrderedListStyle (isTightList b) a
-                           inTags True "text:list" [ ("text:style-name", "L" ++ show ln)]
+                           -- Proof-of-concept: hard-coding
+                           inTags True "text:list" [ ("text:style-name", "Numbering_20_1")]
                                       <$> orderedListToOpenDocument o pn b
       table c a w h r = do
         tn <- length <$> gets stTableStyles
